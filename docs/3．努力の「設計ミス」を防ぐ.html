@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>reveal-md</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./dist/reset.css" />
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="./dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/base16/zenburn.css" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
+          <textarea data-template>
+            <div style="text-align: left;">
+
+## 3. 努力の「設計ミス」を防ぐ
+</div>
+
+
+<div style="text-align: left;">
+
+### 間違った努力を防ぐ3つの原則<br>
+</div>
+
+
+<div style="text-align: left;">
+
+### ①目標に期限を設定する
+#### なぜ必要なのか
+* 時間・労力・資金などの資源が失われたことを<br>自覚した時、失敗を正しく認識できるから
+* 「まだ成果はないけど、まだ挑戦中なんで」と<br>成功か失敗かの判定を無限に先送りできてしまうから
+</div>
+
+
+<div style="text-align: left;">
+
+### ② 目標に対するステップを細かく刻む
+#### なぜ必要なのか
+* 自分の現在地を誤認して、<br>高すぎる目標に挑むと『足踏み』に陥るから
+<div>
+
+
+<div style="text-align: left;">
+
+### ③成果を得るための<br>　「特別な何か」を探さない
+#### なぜ必要なのか
+* どこかに魔法のような正解やショートカットが<br>あると思い込み、地味な鍛錬が疎かになるから
+* 他人の「答え」（成功例）を集めたところで<br>己の”経験”にはならないから
+* その「答え」だと思う”何か”を探している間にも<br>競争相手は鍛錬や経験を積んでいるから
+</div>
+
+
+<div style="text-align: left;">
+
+#### まとめ：
+* 成功と失敗を計測するために期限を切る。
+* 特別な「何か」に期待をしない。
+* 自分ができる確実な高さまでステップを細分化する。
+
+これらが「努力」と呼ばれるものの本質である。
+</div>
+
+          </textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./mermaid/dist/mermaid.min.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/zoom/zoom.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"_":["md"],"static":"docs"}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
+    </script>
+
+    <script>
+      const mermaidOptions = extend({ startOnLoad: false }, {});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) {
+        mermaid.init(mermaidOptions, '.stack.present > .present pre code.mermaid');
+        mermaid.init(mermaidOptions, '.slides > .present:not(.stack) pre code.mermaid');
+      }
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
+    </script>
+  </body>
+</html>
