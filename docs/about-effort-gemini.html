@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>努力の本質 - スライド</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,54 +23,62 @@
             --accent-color: #2563eb; /* Blue-600 */
         }
         
+        /* フォントサイズの固定指定を削除し、相対サイズのみにします */
         .reveal .slides section {
+            /* padding: 20px; Reveal.jsのmargin設定に任せます */
             height: 100%;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* 垂直方向中央寄せ */
+            align-items: center;
         }
 
         .reveal h1, .reveal h2, .reveal h3 {
             font-weight: 700;
-            color: #1e293b; /* Slate-800 */
+            color: #1e293b;
         }
         
         .reveal p, .reveal li {
-            font-size: 32px;
-            color: #334155; /* Slate-700 */
-            line-height: 1.6;
+            color: #334155;
+            line-height: 1.5;
         }
 
         .reveal ul {
             display: block;
             margin-left: 1.5em;
+            text-align: left;
         }
 
         .highlight-box {
             background-color: #eff6ff;
             border-left: 6px solid var(--accent-color);
-            padding: 20px;
-            margin: 20px 0;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
             border-radius: 0 8px 8px 0;
+            text-align: left;
         }
 
         .card {
             background: white;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             border-radius: 12px;
-            padding: 2rem;
-            margin-top: 1rem;
+            padding: 1.5rem;
+            text-align: left;
         }
 
-        .text-accent {
-            color: var(--accent-color);
+        /* コンテンツ幅の制御 */
+        .content-wrapper {
+            width: 100%;
+            max-width: 1200px; /* スライド幅の最大値に合わせて調整 */
         }
 
-        /* Utility for centering slide content vertically */
-        .slide-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
+        /* グリッド調整 */
+        .grid-container {
+            display: grid;
+            gap: 1.5rem;
+            width: 100%;
         }
+
     </style>
 </head>
 <body>
@@ -80,15 +88,15 @@
 
         <!-- Slide 1: Title -->
         <section>
-            <div class="slide-container text-center">
-                <div class="mb-8">
-                    <span class="inline-block p-3 rounded-full bg-blue-100 text-blue-600 mb-4">
-                        <i class="fas fa-chart-line fa-3x"></i>
+            <div class="content-wrapper text-center">
+                <div class="mb-6">
+                    <span class="inline-block p-4 rounded-full bg-blue-100 text-blue-600">
+                        <i class="fas fa-chart-line fa-4x"></i>
                     </span>
                 </div>
                 <h1 class="text-6xl mb-4">努力の本質</h1>
-                <h3 class="text-3xl text-gray-500 font-normal">「頑張っているのに報われない」をなくす<br>思考と設計の技術</h3>
-                <div class="mt-12 text-xl text-gray-400 border-t pt-8 w-1/2 mx-auto">
+                <h3 class="text-3xl text-gray-500 font-normal mt-4">「頑張っているのに報われない」をなくす<br>思考と設計の技術</h3>
+                <div class="mt-10 text-xl text-gray-400 border-t pt-6 w-2/3 mx-auto">
                     <p>For Leaders & Players</p>
                 </div>
             </div>
@@ -96,22 +104,22 @@
 
         <!-- Slide 2: Introduction -->
         <section>
-            <div class="slide-container">
+            <div class="content-wrapper">
                 <h2 class="text-4xl border-b-2 border-blue-500 pb-2 mb-8 inline-block">1. なぜ今、「努力」を定義し直すのか？</h2>
                 
                 <div class="grid grid-cols-1 gap-6">
                     <div class="card bg-red-50 border-l-4 border-red-400">
                         <h3 class="text-2xl font-bold text-red-600 mb-4"><i class="fas fa-exclamation-circle mr-2"></i>現場で起きがちな「努力の誤解」</h3>
-                        <ul class="list-none space-y-3">
-                            <li><i class="fas fa-times text-red-400 w-8"></i> 「時間をかければ努力したことになる」 <span class="text-gray-400 text-2xl">(残業 ≠ 成果)</span></li>
-                            <li><i class="fas fa-times text-red-400 w-8"></i> 「辛いことを我慢するのが努力だ」 <span class="text-gray-400 text-2xl">(苦痛耐性 ≠ 成果)</span></li>
-                            <li><i class="fas fa-times text-red-400 w-8"></i> 「結果が出なくても、過程は評価されるべきだ」</li>
+                        <ul class="list-none space-y-2 text-xl">
+                            <li><i class="fas fa-times text-red-400 w-6"></i> 「時間をかければ努力したことになる」 <span class="text-gray-500 text-lg">(残業 ≠ 成果)</span></li>
+                            <li><i class="fas fa-times text-red-400 w-6"></i> 「辛いことを我慢するのが努力だ」 <span class="text-gray-500 text-lg">(苦痛耐性 ≠ 成果)</span></li>
+                            <li><i class="fas fa-times text-red-400 w-6"></i> 「結果が出なくても、過程は評価されるべきだ」</li>
                         </ul>
                     </div>
 
                     <div class="card bg-blue-50 border-l-4 border-blue-500">
                         <h3 class="text-2xl font-bold text-blue-700 mb-2"><i class="fas fa-bullseye mr-2"></i>本スライドの目的</h3>
-                        <p class="text-3xl">努力を「精神論」から<span class="font-bold text-blue-600 border-b-4 border-blue-200">「再現性のある技術」</span>へとアップデートする。</p>
+                        <p class="text-2xl">努力を「精神論」から<span class="font-bold text-blue-600 border-b-2 border-blue-200">「再現性のある技術」</span>へとアップデートする。</p>
                     </div>
                 </div>
             </div>
@@ -119,52 +127,52 @@
 
         <!-- Slide 3: Ichiro's Perspective -->
         <section>
-            <div class="slide-container">
-                <h2 class="text-4xl border-b-2 border-blue-500 pb-2 mb-6">2. イチローの視点：努力とは「他者評価」であり「日常」</h2>
+            <div class="content-wrapper">
+                <h2 class="text-3xl border-b-2 border-blue-500 pb-2 mb-6 text-left">2. イチローの視点：努力とは「他者評価」であり「日常」</h2>
                 
                 <div class="highlight-box">
-                    <p class="italic text-gray-600">「努力って人が決めることだから。<br>自分で『私、努力してます』と言うのはおかしい」</p>
+                    <p class="italic text-gray-600 text-2xl">「努力って人が決めることだから。<br>自分で『私、努力してます』と言うのはおかしい」</p>
                 </div>
 
-                <div class="grid grid-cols-2 gap-8 mt-4">
+                <div class="grid grid-cols-2 gap-6 mt-4">
                     <div class="card">
-                        <h4 class="font-bold text-blue-600 mb-2"><i class="fas fa-skull-crossbones mr-2"></i>主観の罠を捨てる</h4>
-                        <p class="text-2xl">「これだけやったから報われるはず」という見返りを求める心（下心）は、成長を阻害する。</p>
+                        <h4 class="font-bold text-blue-600 mb-2 text-xl"><i class="fas fa-skull-crossbones mr-2"></i>主観の罠を捨てる</h4>
+                        <p class="text-lg">「これだけやったから報われるはず」という見返りを求める心（下心）は、成長を阻害する。</p>
                     </div>
                     <div class="card">
-                        <h4 class="font-bold text-blue-600 mb-2"><i class="fas fa-level-up-alt mr-2"></i>基準値を上げる</h4>
-                        <p class="text-2xl">自分にとっては「日常（当たり前）」だが、他人から見ると「努力」に見える状態を作る。</p>
+                        <h4 class="font-bold text-blue-600 mb-2 text-xl"><i class="fas fa-level-up-alt mr-2"></i>基準値を上げる</h4>
+                        <p class="text-lg">自分にとっては「日常（当たり前）」だが、他人から見ると「努力」に見える状態を作る。</p>
                     </div>
                 </div>
 
-                <div class="mt-8 text-center">
-                    <p class="text-3xl font-bold text-gray-700">Q. その仕事は「特別なイベント」ですか？<br>それとも「プロとしての日常」ですか？</p>
+                <div class="mt-6 text-center bg-gray-100 p-4 rounded-lg">
+                    <p class="text-2xl font-bold text-gray-700">Q. その仕事は「特別なイベント」ですか？<br>それとも「プロとしての日常」ですか？</p>
                 </div>
             </div>
         </section>
 
         <!-- Slide 4: Hyuse's Perspective -->
         <section>
-            <div class="slide-container">
-                <h2 class="text-4xl border-b-2 border-blue-500 pb-2 mb-6">3. ヒュースの視点（ワートリ）：努力の「設計ミス」を防ぐ</h2>
+            <div class="content-wrapper">
+                <h2 class="text-3xl border-b-2 border-blue-500 pb-2 mb-6 text-left">3. ヒュースの視点（ワートリ）：努力の「設計ミス」</h2>
                 
-                <p class="mb-4 text-2xl">成果の出ない努力＝<span class="font-bold text-red-500">「足踏み」</span>の原因は3つある。</p>
+                <p class="mb-4 text-xl text-left">成果の出ない努力＝<span class="font-bold text-red-500">「足踏み」</span>の原因は3つある。</p>
 
                 <div class="grid grid-cols-3 gap-4">
                     <div class="card bg-white">
-                        <div class="text-red-500 text-4xl mb-2"><i class="fas fa-hourglass-end"></i></div>
-                        <h4 class="font-bold mb-2 text-xl">① 期限がない</h4>
-                        <p class="text-xl text-gray-600">「いつか成功すればいい」では失敗を認識できない。期限こそが失敗というデータを回収する装置。</p>
+                        <div class="text-red-500 text-3xl mb-2"><i class="fas fa-hourglass-end"></i></div>
+                        <h4 class="font-bold mb-2 text-lg">① 期限がない</h4>
+                        <p class="text-base text-gray-600">「いつか成功すればいい」では失敗を認識できない。期限こそが失敗というデータを回収する装置。</p>
                     </div>
                     <div class="card bg-white">
-                        <div class="text-red-500 text-4xl mb-2"><i class="fas fa-mountain"></i></div>
-                        <h4 class="font-bold mb-2 text-xl">② 階段が高すぎる</h4>
-                        <p class="text-xl text-gray-600">現在地を無視した高すぎる目標は行動を止める。プライドを捨ててステップを細分化せよ。</p>
+                        <div class="text-red-500 text-3xl mb-2"><i class="fas fa-mountain"></i></div>
+                        <h4 class="font-bold mb-2 text-lg">② 階段が高すぎる</h4>
+                        <p class="text-base text-gray-600">現在地を無視した高すぎる目標は行動を止める。プライドを捨ててステップを細分化せよ。</p>
                     </div>
                     <div class="card bg-white">
-                        <div class="text-red-500 text-4xl mb-2"><i class="fas fa-search"></i></div>
-                        <h4 class="font-bold mb-2 text-xl">③ 「答え」を探す</h4>
-                        <p class="text-xl text-gray-600">魔法の正解（ショートカット）はない。借り物の答えを探す時間は努力ではない。</p>
+                        <div class="text-red-500 text-3xl mb-2"><i class="fas fa-search"></i></div>
+                        <h4 class="font-bold mb-2 text-lg">③ 「答え」を探す</h4>
+                        <p class="text-base text-gray-600">魔法の正解（ショートカット）はない。借り物の答えを探す時間は努力ではない。</p>
                     </div>
                 </div>
             </div>
@@ -172,32 +180,32 @@
 
         <!-- Slide 5: Synthesis -->
         <section>
-            <div class="slide-container">
-                <h2 class="text-4xl border-b-2 border-blue-500 pb-2 mb-8">4. 統合：プレイングマネージャーが目指すべき「努力の技術」</h2>
+            <div class="content-wrapper">
+                <h2 class="text-3xl border-b-2 border-blue-500 pb-2 mb-6 text-left">4. 統合：プレイングマネージャーが目指すべき技術</h2>
 
-                <div class="flex items-center justify-center mb-8">
-                    <div class="bg-blue-100 px-6 py-3 rounded-full text-blue-800 font-bold text-2xl">
+                <div class="flex items-center justify-center mb-6">
+                    <div class="bg-blue-100 px-6 py-2 rounded-full text-blue-800 font-bold text-xl">
                         イチローの「マインド」 × ヒュースの「ロジック」
                     </div>
                 </div>
 
-                <div class="space-y-6">
-                    <div class="flex items-start">
-                        <div class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">1</div>
+                <div class="space-y-4 text-left">
+                    <div class="flex items-start bg-white p-4 rounded-lg shadow-sm">
+                        <div class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg mr-4 flex-shrink-0">1</div>
                         <div>
-                            <h3 class="text-3xl font-bold text-gray-800">設計 <span class="text-xl font-normal text-gray-500">(Manager視点 / ヒュース流)</span></h3>
-                            <ul class="mt-2 text-2xl text-gray-600">
+                            <h3 class="text-2xl font-bold text-gray-800">設計 <span class="text-lg font-normal text-gray-500">(Manager / ヒュース流)</span></h3>
+                            <ul class="mt-1 text-lg text-gray-600 list-disc ml-5">
                                 <li><strong>Deadline:</strong> 失敗をデータとして回収するために、必ず期限を設ける。</li>
                                 <li><strong>Breakdown:</strong> 「これなら今日できる」レベルまでタスクを分解する。</li>
                             </ul>
                         </div>
                     </div>
                     
-                    <div class="flex items-start">
-                        <div class="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4 flex-shrink-0">2</div>
+                    <div class="flex items-start bg-white p-4 rounded-lg shadow-sm">
+                        <div class="bg-green-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg mr-4 flex-shrink-0">2</div>
                         <div>
-                            <h3 class="text-3xl font-bold text-gray-800">習慣化 <span class="text-xl font-normal text-gray-500">(Player視点 / イチロー流)</span></h3>
-                            <ul class="mt-2 text-2xl text-gray-600">
+                            <h3 class="text-2xl font-bold text-gray-800">習慣化 <span class="text-lg font-normal text-gray-500">(Player / イチロー流)</span></h3>
+                            <ul class="mt-1 text-lg text-gray-600 list-disc ml-5">
                                 <li><strong>Routine:</strong> 「頑張ってやる」のではなく「淡々とやる」日常へ移行。</li>
                                 <li><strong>Micro-Growth:</strong> 他人比較ではなく「昨日の自分より進んだか」だけ計測。</li>
                             </ul>
@@ -209,24 +217,24 @@
 
         <!-- Slide 6: For Management -->
         <section>
-            <div class="slide-container">
-                <h2 class="text-4xl border-b-2 border-blue-500 pb-2 mb-8">5. マネジメントへの応用：「頑張り」をどう評価するか？</h2>
+            <div class="content-wrapper">
+                <h2 class="text-3xl border-b-2 border-blue-500 pb-2 mb-8 text-left">5. マネジメント応用：「頑張り」をどう評価するか？</h2>
 
-                <div class="grid grid-cols-2 gap-8">
-                    <div class="p-6 rounded-xl bg-red-50 border border-red-100">
-                        <h3 class="text-2xl font-bold text-red-600 mb-4"><i class="fas fa-times-circle mr-2"></i>NGな評価・指導</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-start"><span class="mr-2">❌</span> <div>「もっと気合を入れろ」<br><span class="text-xl text-gray-500">（具体性のない精神論）</span></div></li>
-                            <li class="flex items-start"><span class="mr-2">❌</span> <div>「遅くまで残って偉いな」<br><span class="text-xl text-gray-500">（質の伴わない長時間労働への賛美）</span></div></li>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="p-5 rounded-xl bg-red-50 border border-red-100 text-left">
+                        <h3 class="text-xl font-bold text-red-600 mb-3"><i class="fas fa-times-circle mr-2"></i>NGな評価・指導</h3>
+                        <ul class="space-y-3 text-lg">
+                            <li class="flex items-start"><span class="mr-2">❌</span> <div>「もっと気合を入れろ」<br><span class="text-base text-gray-500">（具体性のない精神論）</span></div></li>
+                            <li class="flex items-start"><span class="mr-2">❌</span> <div>「遅くまで残って偉いな」<br><span class="text-base text-gray-500">（質の伴わない長時間労働への賛美）</span></div></li>
                         </ul>
                     </div>
 
-                    <div class="p-6 rounded-xl bg-green-50 border border-green-100">
-                        <h3 class="text-2xl font-bold text-green-700 mb-4"><i class="fas fa-check-circle mr-2"></i>OKな評価・指導</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-start"><span class="mr-2">✅</span> <div><strong>方向性：</strong><br>「その努力は成果に対して正しいベクトルか？」</div></li>
+                    <div class="p-5 rounded-xl bg-green-50 border border-green-100 text-left">
+                        <h3 class="text-xl font-bold text-green-700 mb-3"><i class="fas fa-check-circle mr-2"></i>OKな評価・指導</h3>
+                        <ul class="space-y-3 text-lg">
+                            <li class="flex items-start"><span class="mr-2">✅</span> <div><strong>方向性：</strong><br>「努力は成果に対して正しいベクトルか？」</div></li>
                             <li class="flex items-start"><span class="mr-2">✅</span> <div><strong>設計：</strong><br>「期限とステップは検証可能か？」</div></li>
-                            <li class="flex items-start"><span class="mr-2">✅</span> <div><strong>基準：</strong><br>「高い基準を『当たり前』にしている姿勢」</div></li>
+                            <li class="flex items-start"><span class="mr-2">✅</span> <div><strong>基準：</strong><br>「高い基準を『当たり前』にする姿勢」</div></li>
                         </ul>
                     </div>
                 </div>
@@ -235,26 +243,26 @@
 
         <!-- Slide 7: Conclusion -->
         <section>
-            <div class="slide-container text-center">
-                <h2 class="text-4xl mb-8">6. まとめ：努力の本質とは</h2>
+            <div class="content-wrapper text-center">
+                <h2 class="text-4xl mb-6">6. まとめ：努力の本質とは</h2>
                 
-                <p class="text-3xl font-bold mb-12 text-gray-700">努力とは、苦行に耐えることではない。</p>
+                <p class="text-2xl font-bold mb-8 text-gray-700">努力とは、苦行に耐えることではない。</p>
 
-                <div class="flex justify-center gap-6 mb-12">
-                    <div class="bg-white p-6 rounded-lg shadow-lg w-1/3 border-t-4 border-blue-500">
-                        <div class="text-4xl text-blue-500 mb-4"><i class="fas fa-chess"></i></div>
-                        <h3 class="font-bold text-xl mb-2">戦略的であること</h3>
-                        <p class="text-lg text-gray-500">失敗をデータに変える設計</p>
+                <div class="flex justify-center gap-6 mb-8">
+                    <div class="bg-white p-5 rounded-lg shadow-lg w-1/3 border-t-4 border-blue-500">
+                        <div class="text-3xl text-blue-500 mb-3"><i class="fas fa-chess"></i></div>
+                        <h3 class="font-bold text-lg mb-1">戦略的であること</h3>
+                        <p class="text-base text-gray-500">失敗をデータに変える設計</p>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg w-1/3 border-t-4 border-green-500">
-                        <div class="text-4xl text-green-500 mb-4"><i class="fas fa-sync-alt"></i></div>
-                        <h3 class="font-bold text-xl mb-2">日常化すること</h3>
-                        <p class="text-lg text-gray-500">無意識レベルの習慣化</p>
+                    <div class="bg-white p-5 rounded-lg shadow-lg w-1/3 border-t-4 border-green-500">
+                        <div class="text-3xl text-green-500 mb-3"><i class="fas fa-sync-alt"></i></div>
+                        <h3 class="font-bold text-lg mb-1">日常化すること</h3>
+                        <p class="text-base text-gray-500">無意識レベルの習慣化</p>
                     </div>
                 </div>
 
-                <div class="p-6 bg-blue-600 text-white rounded-xl shadow-xl">
-                    <p class="text-2xl font-medium">「努力」という言葉に逃げず、成果が出るための準備を淡々と積み重ねよう。<br>それが、プロフェッショナルの仕事です。</p>
+                <div class="p-6 bg-blue-600 text-white rounded-xl shadow-xl w-3/4 mx-auto">
+                    <p class="text-xl font-medium">「努力」という言葉に逃げず、成果が出るための準備を淡々と積み重ねよう。<br>それが、プロフェッショナルの仕事です。</p>
                 </div>
             </div>
         </section>
@@ -269,10 +277,21 @@
         progress: true,
         center: true,
         hash: true,
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
         
-        // Learn about plugins: https://revealjs.com/plugins/
-        // plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+        // --- レスポンシブ設定 (ここが重要) ---
+        // スライドの基準サイズを設定します。
+        // コンテンツはこのサイズに合わせて描画され、ディスプレイサイズに合わせて自動的にスケーリングされます。
+        width: 1280,
+        height: 720,
+        
+        // スライドの周囲の余白
+        margin: 0.04,
+        
+        // スケーリングの最小・最大比率
+        minScale: 0.2,
+        maxScale: 2.0,
+        
+        transition: 'slide' 
     });
 </script>
 </body>
