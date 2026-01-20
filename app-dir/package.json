@@ -12,11 +12,16 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+  "homepage": "https://github.com/Tatsuya0518/Pages_Upload/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "rm": "del /s /q docs",
+    "mv": "move build docs",
+    "git": "git add . && git commit -m 'update' && git push origin main",
+    "deploy": "npm run build && npm run rm && npm run mv && npm run git"
   },
   "eslintConfig": {
     "extends": [
